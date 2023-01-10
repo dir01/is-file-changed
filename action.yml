@@ -1,11 +1,28 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Is File Changed'
+description: 'Checks if Pull Request has changes in files matching certain pattern'
+
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  include_glob:
+    description: 'Only filepaths matching this glob expression will be considered'
+    required: false
+    default: ''
+  exclude_glob:
+    description: 'Filepaths matching this glob expression will be excluded'
+    required: false
+    default: ''
+  include_regex:
+    description: 'Only filepaths matching this regex expression will be considered'
+    required: false
+    default: ''
+  exclude_regex:
+    description: 'Filepaths matching this regex expression will be excluded'
+    required: false
+    default: ''
+
+outputs:
+  result:
+    description: 'Were there any changes in files satisfying the conditions? "true"/"false"'
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
