@@ -12,6 +12,8 @@ export function withGitRepo(callback: () => Promise<void>): void {
   process.chdir(tempDir)
 
   child_process.execSync('git init')
+  child_process.execSync('git config user.name "John Doe"')
+  child_process.execSync('git config user.email "johndoe@example.com"')
   fs.writeFileSync('file_1', '')
   child_process.execSync('git add file_1')
   child_process.execSync('git commit -m "initial commit"')
