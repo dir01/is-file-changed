@@ -19,7 +19,7 @@ export function withGitRepo(callback: () => Promise<void>): void {
   child_process.execSync('git commit -m "initial commit"')
 
   callback().finally(() => {
-    fs.rmdirSync(tempDir, {recursive: true})
+    fs.rmSync(tempDir, {recursive: true})
     process.chdir(originalCwd)
   })
 }
